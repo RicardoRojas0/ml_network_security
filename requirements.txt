@@ -2,6 +2,9 @@ python-dotenv
 pandas 
 numpy
 pymongo
+certifi
 scikit-learn
 matplotlib
 seaborn
+ipykernel
+# -e .

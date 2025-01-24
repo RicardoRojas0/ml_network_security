@@ -17,6 +17,16 @@ verify = certifi.where()
 
 
 class NetworkDataExtract:
+    """
+    This class extracts the network data and perform operations such as converting CSV files to JSON format
+    and inserting data into a MongoDB database.
+
+    Methods:
+        __init__(): Initializes the NetworkDataExtract class.
+        csv_to_json(file_path): Converts a CSV file to JSON format.
+        insert_data_to_mongodb(records, database, collection): Inserts the given records into the specified MongoDB database and collection.
+    """
+
     def __init__(self):
         try:
             pass

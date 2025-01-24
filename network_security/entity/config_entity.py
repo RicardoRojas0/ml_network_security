@@ -73,3 +73,57 @@ class DataIngestionConfig:
         )
         self.collection_name: str = training_pipeline.DATA_INGESTION_COLLECTION_NAME
         self.database_name: str = training_pipeline.DATA_INGESTION_DATABASE_NAME
+
+class DataValidationConfig:
+    """
+    DataValidationConfig is a configuration class for setting up paths related to data validation
+    in the pipeline.
+
+    Attributes:
+        data_validation_dir (str): Directory for storing data validation artifacts.
+        valid_data_dir (str): Directory for storing valid data.
+        invalid_data_dir (str): Directory for storing invalid data.
+        valid_train_file_path (str): Path to the valid training data file.
+        valid_test_file_path (str): Path to the valid test data file.
+        invalid_training_file_path (str): Path to the invalid training data file.
+        invalid_test_file_path (str): Path to the invalid test data file.
+        drift_report_file_path (str): Path to the data drift report file.
+
+    Args:
+        training_pipeline_config (TrainingPipelineConfig): Configuration object for the training pipeline.
+    """
+
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        self.data_validation_dir: str = os.path.join(
+            training_pipeline_config.artifact_dir,
+            training_pipeline.DATA_VALIDATION_DIR_NAME,
+        )
+        self.valid_data_dir: str = os.path.join(
+            self.data_validation_dir,
+            training_pipeline.DATA_VALIDATION_VALID_DIR,
+        )
+        self.invalid_data_dir: str = os.path.join(
+            self.data_validation_dir,
+            training_pipeline.DATA_VALIDATION_INVALID_DIR,
+        )
+        self.valid_train_file_path: str = os.path.join(
+            self.valid_data_dir,
+            training_pipeline.TRAIN_FILE_NAME,
+        )
+        self.valid_test_file_path: str = os.path.join(
+            self.valid_data_dir,
+            training_pipeline.TEST_FILE_NAME,
+        )
+        self.invalid_training_file_path: str = os.path.join(
+            self.invalid_data_dir,
+            training_pipeline.TRAIN_FILE_NAME,
+        )
+        self.invalid_test_file_path: str = os.path.join(
+            self.invalid_data_dir,
+            training_pipeline.TEST_FILE_NAME,
+        )
+        self.drift_report_file_path: str = os.path.join(
+            self.data_validation_dir,
+            training_pipeline.DATA_VALIDATION_DRIFT_REPORT_DIR,
+            training_pipeline.DATA_VALIDATION_DRIFT_REPORT_FILE_NAME,
+        )

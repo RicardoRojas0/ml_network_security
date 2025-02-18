@@ -126,12 +126,16 @@ class DataTransformation:
                 object=preprocessor,
             )
 
+            # Hardcoded preprocessor pusher
+            save_object("final_model/preprocessor.pkl", preprocessor)
+
+            # Data transformation artifact
             data_transformation_artifact = DataTransformationArtifact(
                 transformed_train_file_path=self.data_transformation_config.transformed_train_file_path,
                 transformed_test_file_path=self.data_transformation_config.transformed_test_file_path,
                 transformed_object_file_path=self.data_transformation_config.transformed_object_file_path,
             )
-            
+
             return data_transformation_artifact
         except Exception as e:
             raise NetworkSecurityException(e, sys)

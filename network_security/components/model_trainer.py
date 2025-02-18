@@ -34,6 +34,8 @@ from sklearn.ensemble import (
 from sklearn.metrics import r2_score
 
 import mlflow
+# import dagshub
+# dagshub.init(repo_owner='RicardoRojas0', repo_name='ml_network_security', mlflow=True)
 
 
 class ModelTrainer:
@@ -148,6 +150,9 @@ class ModelTrainer:
         save_object(
             self.model_trainer_config.trained_model_file_path, object=network_model
         )
+
+        # Hardcoded model pusher
+        save_object("final_model/model.pkl", best_model)
 
         # Model Trainer Artifact
         model_trainer_artifact = ModelTrainerArtifact(
